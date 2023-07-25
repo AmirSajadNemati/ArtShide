@@ -1,0 +1,44 @@
+{% extends 'shared/_Layout.html' %}
+
+{% block title %}
+    تایید شماره همراه
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <article id="post-47" class="post-47 page type-page status-publish hentry">
+            <div class="entry-content">
+                <div class="learnpress">
+                    <div id="learn-press-profile" class="lp-user-profile guest">
+                        <div class="main-content-area row">
+                            <div class="learn-press-form-register learn-press-form">
+                                <h3>تایید شماره همراه</h3>
+                                <form name="learn-press-register" method="post"
+                                      action="{% url 'activate-account-page' %}">
+                                    {% csrf_token %}
+                                    <ul class="form-fields">
+                                        <li class="form-field">
+                                            {{ sms_active_code_form.activation_code }}
+                                            {{ sms_active_code_form.activation_code.errors }}
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        <input type="hidden" id="learn-press-register-nonce"
+                                               name="learn-press-register-nonce" value="d9160cea03">
+                                        <input
+                                                type="hidden"
+                                                name="_wp_http_referer"
+                                                value="/lp-profile/">
+                                        <button type="submit">تایید</button>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .entry-content -->
+        </article>
+    </div>
+{% endblock %}

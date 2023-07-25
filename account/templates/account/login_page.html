@@ -1,0 +1,84 @@
+{% extends 'shared/_Layout.html' %}
+
+{% block title %}ورود به حساب کاربری{% endblock %}
+
+{% block content %}
+    {##}
+    {#    <!-- breadcrumb part -->#}
+    {#    <section class="breadcrumb_part blog_grid_bg">#}
+    {#        <div class="container">#}
+    {#            <div class="row justify-content-center">#}
+    {#                <div class="col-lg-6 ">#}
+    {#                    <div class="breadcrumb_iner">#}
+    {#                        <h2>استاد شوید</h2>#}
+    {#                        <div class="breadcrumb_iner_link">#}
+    {#                            <a href="index.html">خانه</a>#}
+    {#                            <i class="arrow_carrot-left"></i>#}
+    {#                            <span>استاد شوید</span>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
+    {#    <!-- breadcrumb part end -->#}
+
+    <!-- become a teacher part here -->
+    <div id="primary" class="content-area section_padding">
+        <main id="main" class="site-main">
+            <div class="container">
+
+                <br/>
+                <article id="post-47" class="post-47 page type-page status-publish hentry">
+                    <div class="entry-content">
+                        <div class="learnpress">
+                            <div id="learn-press-profile" class="lp-user-profile guest">
+                                <div class="main-content-area row">
+                                    <div class="learn-press-form-login learn-press-form">
+                                        <h3>وارد شوید</h3>
+                                        <form name="learn-press-login" method="post" action="{% url 'login-page' %}">
+                                            {% csrf_token %}
+                                            <ul class="form-fields">
+                                                <li class="form-field">
+                                                    {{ login_form.phone.label_tag }}
+                                                    {{ login_form.phone }}
+                                                    <div class="text-danger"> {{ login_form.phone.errors }}</div>
+                                                </li>
+                                                <li class="form-field">
+                                                    {{ login_form.password.label_tag }}
+                                                    {{ login_form.password }}
+                                                    <div class="text-danger">
+                                                        {{ login_form.password.errors }}
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <p>
+                                                <label>
+                                                    <input type="checkbox" name="rememberme">
+                                                    مرا به خاطر بسپار
+                                                </label>
+                                            </p>
+                                            <p>
+                                                <input type="hidden" name="learn-press-login-nonce" value="f346c119af">
+                                                <button type="submit">وارد شوید</button>
+                                            </p>
+                                            <p>
+                                                <a href="#">رمز عبور خود را فراموش کرده اید؟</a>
+                                            </p>
+                                            <a href="{% url 'register-page' %}" class="link-underline">ایجاد حساب
+                                                کاربری </a>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .entry-content -->
+                </article>
+            </div>
+        </main>
+        <!-- #main -->
+    </div>
+    <!-- become a teacher part end -->
+{% endblock %}

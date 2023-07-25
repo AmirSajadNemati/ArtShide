@@ -1,0 +1,26 @@
+{% load static %}
+{% load render_partial %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+    {% include 'shared/header_refrences.html' %}
+</head>
+<body>
+
+{% render_partial 'home.views.site_header_component' %}
+{% block content %}
+
+{% endblock %}
+{% render_partial 'home.views.site_footer_component' %}
+
+
+{% include 'shared/footer_refrences.html' %}
+</body>
+</html>

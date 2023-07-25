@@ -1,0 +1,101 @@
+{% extends 'shared/_Layout.html' %}
+{% load render_partial %}
+{% block title %}
+    ویرایش اطلاعات کاربری
+{% endblock %}
+
+{% block content %}
+    <section class="breadcrumb_part blog_grid_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 ">
+                    <div class="breadcrumb_iner">
+                        <h2>پروفایل کاربری</h2>
+                        <div class="breadcrumb_iner_link">
+                            <a href="{% url 'home-page' %}">خانه</a>
+                            <i class="arrow_carrot-left"></i>
+                            <span>پروفایل کاربری</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end -->
+
+    <!-- my profile part here -->
+    <div id="primary" class="content-area section_padding" bis_skin_checked="1">
+        <main id="main" class="site-main">
+            <div class="container" bis_skin_checked="1">
+                <article id="post-47" class="post-47 page type-page status-publish hentry">
+                    <div class="entry-content" bis_skin_checked="1">
+                        <div class="learnpress" bis_skin_checked="1">
+                            <div id="learn-press-profile" class="lp-user-profile current-user" bis_skin_checked="1">
+                                <div class="main-content-area" bis_skin_checked="1">
+                                    {% render_partial 'user_panel.views.user_panel_menu_component' %}
+                                    <!-- edit profile fields -->
+                                    <article id="profile-content" class="lp-profile-content">
+                                        <h3 data-aos="fade-up" data-aos-duration="1200" class="aos-init aos-animate">
+                                            اطلاعات کاربری</h3>
+                                        <div class="review_form contact_form section_padding">
+                                            <div class="container">
+
+                                                <form data-aos="fade-up" data-aos-duration="1600" method="post"
+                                                      enctype="multipart/form-data"
+                                                      action="{% url 'edit-profile-page' %}"
+                                                      class="aos-init aos-animate">
+                                                    {% csrf_token %}
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="form_single_item">
+
+                                                                {{ form.first_name }}
+                                                                {{ form.first_name.errors }}
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form_single_item">
+                                                                {{ form.last_name }}
+                                                                {{ form.last_name.errors }}
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="form_single_item">
+                                                                {{ form.email }}
+                                                                {{ form.email.errors }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="form_single_item">
+                                                                {{ form.address }}
+                                                                {{ form.address.errors }}
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="form_single_item">
+                                                                {{ form.about }}
+                                                                {{ form.about.errors }}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="submit" class="btn_3" value="دخیره">
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .entry-content -->
+                </article>
+            </div>
+        </main>
+        <!-- #main -->
+    </div>
+{% endblock %}

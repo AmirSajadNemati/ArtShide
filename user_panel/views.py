@@ -10,7 +10,7 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from account.models import User
-from user_panel.forms import EditProfileModelForm
+from user_panel.forms import EditProfileModelForm, ChangePasswordForm
 
 
 @method_decorator(login_required, name='dispatch')
@@ -46,29 +46,31 @@ class EditUserProfilePage(View):
         }
         return render(request, 'user_panel/edit_profile_page.html', context)
 
+
 #
-# @method_decorator(login_required, name='dispatch')
-# class ChangePasswordPage(View):
-#     def get(self, request: HttpRequest):
-#         context = {
-#             'form': ChangePasswordForm()
-#         }
-#         return render(request, 'user_panel/change_password_page.html', context)
-#
-#     def post(self, request: HttpRequest):
-#         form = ChangePasswordForm(request.POST)
-#         if form.is_valid():
-#             current_user: User = User.objects.filter(id=request.user.id).first()
-#             if current_user.check_password(form.cleaned_data.get('current_password')):
-#                 current_user.set_password(form.cleaned_data.get('password'))
-#                 current_user.save()
-#                 logout(request)
-#                 return redirect(reverse('login-page'))
-#
-#             else:
-#                 form.add_error('password', 'کلمه ی عبور اشتباه می باشد!')
-#
-#         context = {
-#             'form': form
-#         }
-#         return render(request, 'user_panel/change_password_page.html', context)
+@method_decorator(login_required, name='dispatch')
+class ChangePasswordPage(View):
+    def get(self, request: HttpRequest):
+        # todo: empty the value of current password
+        context = {
+            'form': ChangePasswordForm()
+        }
+        return render(request, 'user_panel/change_password_page.html', context)
+
+    def post(self, request: HttpRequest):
+        form = ChangePasswordForm(request.POST)
+        if form.is_valid():
+            current_user: User = User.objects.filter(id=request.user.id).first()
+            if current_user.check_password(form.cleaned_data.get('current_password')):
+                current_user.set_password(form.cleaned_data.get('password'))
+                current_user.save()
+                logout(request)
+                return redirect(reverse('login-page'))
+
+            else:
+                form.add_error('current_password', 'کلمه ی عبور اشتباه می باشد!')
+
+        context = {
+            'form': form
+        }
+        return render(request, 'user_panel/change_password_page.html', context)

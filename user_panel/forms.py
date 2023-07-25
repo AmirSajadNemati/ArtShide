@@ -23,10 +23,10 @@ class EditProfileModelForm(forms.ModelForm):
 
             }),
             'address': forms.Textarea(attrs={
-               'placeholder': 'آدرس من'
+                'placeholder': 'آدرس من'
             }),
             'about': forms.Textarea(attrs={
-               'placeholder': 'درباره من'
+                'placeholder': 'درباره من'
             })
         }
 
@@ -45,7 +45,7 @@ class ChangePasswordForm(forms.Form):
         label='کلمه عبور فعلی',
         widget=forms.PasswordInput(
             attrs={
-                'class': 'form-control'
+                'value': ''
             }
         ),
         validators=[
@@ -56,7 +56,7 @@ class ChangePasswordForm(forms.Form):
         label='کلمه عبور',
         widget=forms.PasswordInput(
             attrs={
-                'class': 'form-control'
+
             }
         ),
         validators=[
@@ -67,7 +67,7 @@ class ChangePasswordForm(forms.Form):
         label='تکرار کلمه عبور',
         widget=forms.PasswordInput(
             attrs={
-                'class': 'form-control'
+
             }
         ),
         validators=[

@@ -13,8 +13,8 @@
                 </a>
             </li>
 
-            <li class="logout ">
-                <a href="#" data-slug="#">
+            <li class="logout {% if request.resolver_match.url_name == 'change-password-page' %}active{% endif %}">
+                <a href="{% url 'change-password-page' %}" data-slug="#">
                     <i class="fas fa-key"></i>تغییر رمز عبور
                 </a>
             </li>

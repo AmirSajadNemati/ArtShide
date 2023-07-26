@@ -2,7 +2,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
-
+from utils import sms_kaveh
 # Create your views here.
 from django.urls import reverse
 from django.utils.decorators import method_decorator
@@ -28,6 +28,9 @@ class EditUserProfilePage(View):
     def get(self, request: HttpRequest):
         current_user = User.objects.filter(id=request.user.id).first()
         edit_form = EditProfileModelForm(instance=current_user)
+
+
+
         context = {
             'form': edit_form,
             'current_user': current_user

@@ -8,8 +8,8 @@ from django.views import View
 
 from account.forms import RegisterForm, SMSActiveCodeForm, LoginForm
 from account.models import User
-
-
+from utils.sms_kaveh import send_activation_code_sms
+from utils.random_number_by_digits_generator import random_number_by_digits_generator
 class RegisterView(View):
     def get(self, request):
         register_form = RegisterForm()
@@ -27,7 +27,7 @@ class RegisterView(View):
             username = register_form.cleaned_data.get('username')
             new_user = User(
                 phone=user_phone,
-                sms_active_code=123456,
+                sms_active_code=random_number_by_digits_generator(7),
                 is_verified=False,
                 username=username
             )
@@ -63,12 +63,10 @@ class ActivateAccountView(View):
             user: User = User.objects.filter(sms_active_code__iexact=user_active_code).first()
             if user is not None:
                 if active_code == user.sms_active_code:
-                    print("here")
                     user.is_verified = True
                     user.save()
                     return redirect(reverse('home-page'))
                 else:
-                    print('wrong code')
                     sms_active_code_form.add_error('activation_code', 'کد وارد شده اشتباه می باشد')
             else:
                 sms_active_code_form.add_error('activation_code', 'کاربری یافت نشد')
@@ -101,6 +99,7 @@ class LoginView(View):
                 if is_password_correct:
                     login(request, user)
                     if not user.is_verified:
+                        send_activation_code_sms(user.phone, f'کد فعالسازی شماره همراه شما {user.sms_active_code}')
                         return redirect(reverse('activate-account-page'))
                     else:
                         return redirect(reverse('home-page'))

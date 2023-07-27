@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'home',
     'contact_us',
     'user_panel',
+    'course',
+    'order',
 
     # External Apps
     'django_render_partial',

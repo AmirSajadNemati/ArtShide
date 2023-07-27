@@ -1,14 +1,14 @@
 <aside id="profile-sidebar">
     <div id="profile-nav" bis_skin_checked="1">
         <ul class="lp-profile-nav-tabs">
-             <li class="logout">
+            <li class="logout">
                 <a href="#">
                     <i class="fas fa-book"></i>دوره های من
                 </a>
             </li>
 
             <li class="logout {% if request.resolver_match.url_name == 'edit-profile-page' %}active{% endif %}">
-                <a  href="{% url 'edit-profile-page' %}" data-slug="#">
+                <a href="{% url 'edit-profile-page' %}" data-slug="#">
                     <i class="fas fa-cog"></i>ویرایش اطلاعات
                 </a>
             </li>
@@ -20,8 +20,6 @@
             </li>
 
 
-
-
             <li class="logout">
                 <a href="{% url 'logout_page' %}" data-slug="index.html">
                     <i class="fas fa-sign-out-alt"></i> خروج
@@ -30,3 +28,4 @@
         </ul>
     </div>
 </aside>
+

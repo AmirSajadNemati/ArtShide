@@ -30,8 +30,8 @@
                                         خانه</a>
                                 </li>
                                  <li>
-                                    <a href=""
-                                       class="{% if request.resolver_match.url_name == '' %}active{% endif %} ">
+                                    <a href="{% url 'course-list' %}"
+                                       class="{% if request.resolver_match.url_name == 'course-list' %}active{% endif %} ">
                                         دوره ها</a>
                                 </li>
 

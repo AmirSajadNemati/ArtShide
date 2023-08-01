@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'user_panel',
     'course',
     'order',
+    'site_settings',
 
     # External Apps
     'django_render_partial',
+    'sorl.thumbnail'
 
 ]
 
@@ -63,10 +65,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ArtShide.urls'
 
+SETTINGS_PATH = os.path.dirname(os.path.dirname (__file__))
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [os.path.join(SETTINGS_PATH, 'templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -138,6 +142,8 @@ MEDIA_ROOT = BASE_DIR / 'uploads'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+STATIC_ROOT = BASE_DIR / 'static_cdn'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

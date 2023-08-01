@@ -19,13 +19,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('courses/', include('course.urls')),
+    path('order/', include('order.urls')),
     path('contact-us/', include('contact_us.urls')),
     path('user/', include('user_panel.urls')),
     path('', include('account.urls')),
     path('', include('home.urls'))
 ]
+handler404 = 'home.views.handler_404_error'
 
-urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

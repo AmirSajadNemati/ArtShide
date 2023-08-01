@@ -1,3 +1,6 @@
+{% load thumbnail %}
+
+
 <!-- start Preloader  -->
 <div class="preloder_part">
     <div class="spinner">
@@ -19,7 +22,12 @@
                             <i class="icon_menu"></i>
                         </div>
                         <div class="logo">
-                            <a href="index.html"><img src="/static/img/logo.png" alt="#"></a>
+
+                            <a href="{% url 'home-page' %}">
+                                {% thumbnail settings.logo_image "142x46" crop="center" as im %}
+                                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+                            {% endthumbnail %}
+                            </a>
                         </div>
 
                         <nav class="navbar_bar">
@@ -29,11 +37,18 @@
                                        class="{% if request.resolver_match.url_name == 'home-page' %}active{% endif %} ">
                                         خانه</a>
                                 </li>
-                                 <li>
+                                <li>
                                     <a href="{% url 'course-list' %}"
                                        class="{% if request.resolver_match.url_name == 'course-list' %}active{% endif %} ">
                                         دوره ها</a>
                                 </li>
+                                {% if request.user.is_authenticated %}
+                                    <li>
+                                        <a href="{% url 'user_cart' %}"
+                                           class="{% if request.resolver_match.url_name == 'user_cart' %}active{% endif %} ">
+                                            سبد خرید</a>
+                                    </li>
+                                {% endif %}
 
                                 <li><a href="{% url 'about-page' %}" class="">درباره ی ما</a></li>
                                 <li><a href="{% url 'contact-us' %}" class="">تماس با ما</a></li>

@@ -1,0 +1,58 @@
+{% extends 'shared/_Layout.html' %}
+{% load render_partial %}
+{% block title %}
+    داشبورد
+{% endblock %}
+
+{% block content %}
+    <section class="breadcrumb_part blog_grid_bg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 ">
+                    <div class="breadcrumb_iner">
+                        <h2>پروفایل کاربری</h2>
+                        <div class="breadcrumb_iner_link">
+                            <a href="{% url 'home-page' %}">خانه</a>
+                            <i class="arrow_carrot-left"></i>
+                            <span>پروفایل کاربری</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb part end -->
+
+    <!-- my profile part here -->
+    <div id="primary" class="content-area section_padding" bis_skin_checked="1">
+        <main id="main" class="site-main">
+            <div class="container" bis_skin_checked="1">
+                <article id="post-47" class="post-47 page type-page status-publish hentry">
+                    <div class="entry-content" bis_skin_checked="1">
+                        <div class="learnpress" bis_skin_checked="1">
+                            <div id="learn-press-profile" class="lp-user-profile current-user" bis_skin_checked="1">
+                                <div class="main-content-area" bis_skin_checked="1">
+                                    {% render_partial 'user_panel.views.user_panel_menu_component' %}
+                                    <article id="profile-content" class="lp-profile-content">
+                                        <div class="alert alert-info cart-warning">
+                                            <ul>
+                                                <li>به زودی این ویژگی به سایت اضافه خواهد شد!</li>
+
+                                            </ul>
+
+                                        </div>
+                                    </article>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- .entry-content -->
+                </article>
+            </div>
+        </main>
+        <!-- #main -->
+    </div>
+
+
+{% endblock %}

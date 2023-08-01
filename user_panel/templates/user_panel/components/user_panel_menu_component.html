@@ -2,7 +2,7 @@
     <div id="profile-nav" bis_skin_checked="1">
         <ul class="lp-profile-nav-tabs">
             <li class="logout">
-                <a href="#">
+                <a href="{% url 'user-courses-page' %}">
                     <i class="fas fa-book"></i>دوره های من
                 </a>
             </li>
@@ -19,6 +19,11 @@
                 </a>
             </li>
 
+        <li class="logout">
+                <a href="{% url 'user-exams-page' %}" data-slug="index.html">
+                    <i class="fas fas fa-puzzle-piece"></i> آزمون ها
+                </a>
+            </li>
 
             <li class="logout">
                 <a href="{% url 'logout_page' %}" data-slug="index.html">

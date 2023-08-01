@@ -64,275 +64,37 @@
                 </div>
                 <div class="lp-entry-content lp-content-area" bis_skin_checked="1">
                     <div class="entry-content-left" bis_skin_checked="1">
-                        {% for video in videos %}
-                            <div class="course-extra-box" bis_skin_checked="1" >
-                                <h3 class="course-extra-box__title">{{ video.title }}</h3>
-                                <div class="course-extra-box__content block" bis_skin_checked="1"  >
-                                    <div class="course-extra-box__content-inner" bis_skin_checked="1" >
-                                        {% include 'course/course_video/video_player_component.html' with video=video %}
-                                    </div>
-                                </div>
+                        {% for headline in course_headlines %}
+                            <div class="section-left" bis_skin_checked="1">
+                                <br>
+                                <h5 class="section-title  ">{{ headline.headLine_title }}
+                                    <p class="section-desc">
+                                       {{ headline.description }}
+                                    </p>
+                                </h5>
                             </div>
+                            {% if is_purchased %}
+                                {% for video in headline.headline_videos.all %}
+                                    <div class="course-extra-box" bis_skin_checked="1">
+                                        <h3 class="course-extra-box__title">{{ video.title }}</h3>
+                                        <div class="course-extra-box__content" bis_skin_checked="1">
+                                            <div class="course-extra-box__content-inner"  bis_skin_checked="1">
+                                                {% include 'course/course_video/video_player_component.html' with video=video %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="course-extra-box locked-course-extra-box" bis_skin_checked="1">
+                                    {% for video in headline.headline_videos.all %}
+                                        <h3 class="course-extra-box__title course_video_lock text-secondary">{{ video.title }}</h3>
+                                    {% endfor %}
+                                    </div>
+                            {% endif %}
                         {% endfor %}
 
-
-                        <div id="learn-press-course-tabs" class="course-tabs" bis_skin_checked="1">
-                            <input type="radio" name="learn-press-course-tab-radio" id="tab-overview-input"
-                                   checked="checked" value="overview">
-                            <input type="radio" name="learn-press-course-tab-radio" id="tab-curriculum-input"
-                                   value="curriculum">
-                            <input type="radio" name="learn-press-course-tab-radio" id="tab-instructor-input"
-                                   value="instructor">
-                            <input type="radio" name="learn-press-course-tab-radio" id="tab-faqs-input" value="faqs">
-                            <ul class="learn-press-nav-tabs course-nav-tabs" data-tabs="4">
-                                <li class="course-nav course-nav-tab-overview active">
-                                    <label for="tab-overview-input">بررسی کلی</label>
-                                </li>
-                                <li class="course-nav course-nav-tab-curriculum">
-                                    <label for="tab-curriculum-input">برنامه تحصیلی</label>
-                                </li>
-                                <li class="course-nav course-nav-tab-instructor">
-                                    <label for="tab-instructor-input">استاد</label>
-                                </li>
-                                <li class="course-nav course-nav-tab-faqs">
-                                    <label for="tab-faqs-input">سوالات</label>
-                                </li>
-                            </ul>
-                            <div class="course-tab-panels" bis_skin_checked="1">
-                                <div class="course-tab-panel-overview course-tab-panel" id="tab-overview"
-                                     bis_skin_checked="1">
-                                    <div class="course-description" id="learn-press-course-description"
-                                         bis_skin_checked="1">
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون</p>
-                                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ</p>
-                                    </div>
-                                </div>
-                                <div class="course-tab-panel-curriculum course-tab-panel" id="tab-curriculum"
-                                     bis_skin_checked="1">
-                                    <div class="course-curriculum" id="learn-press-course-curriculum"
-                                         bis_skin_checked="1">
-                                        <div class="curriculum-scrollable" bis_skin_checked="1">
-                                            <ul class="curriculum-sections">
-                                                <li class="section" id="section-section-1-38" data-id="section-1-38"
-                                                    data-section-id="38">
-                                                    <div class="section-header" bis_skin_checked="1">
-                                                        <div class="section-left" bis_skin_checked="1">
-                                                            <h5 class="section-title">بخش 1
-                                                                <p class="section-desc">
-                                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                    صنعت چاپ و با استفاده از طراحان گرافیک است
-                                                                </p>
-                                                            </h5>
-                                                            <span class="section-toggle">
-                                                                    <i class="fas fa-caret-down" aria-hidden="true"></i>
-                                                                    <i class="fas fa-caret-up" aria-hidden="true"></i>
-                                                                </span>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="section-content">
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="lessons.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">درس 1</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="lessons.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">درس 2</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="lessons.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">درس 3</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="lessons.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">درس 4</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="section" id="section-section-1-38" data-id="section-1-38"
-                                                    data-section-id="38">
-                                                    <div class="section-header" bis_skin_checked="1">
-                                                        <div class="section-left" bis_skin_checked="1">
-                                                            <h5 class="section-title">بخش 2
-                                                                <p class="section-desc">
-                                                                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
-                                                                    صنعت چاپ و با استفاده از طراحان گرافیک است
-                                                                </p>
-                                                            </h5>
-                                                            <span class="section-toggle">
-                                                                    <i class="fas fa-caret-down" aria-hidden="true"></i>
-                                                                    <i class="fas fa-caret-up" aria-hidden="true"></i>
-                                                                </span>
-                                                        </div>
-                                                    </div>
-                                                    <ul class="section-content">
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="quizzes.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">آزمون 1</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="quizzes.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">آزمون 2</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="quizzes.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">آزمون 3</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li class="course-item course-item-lp_lesson course-item-1027 item-preview has-status"
-                                                            data-id="1027">
-                                                            <a class="section-item-link" href="quizzes.html"
-                                                               bis_skin_checked="1">
-                                                                <span class="item-name">آزمون 4</span>
-                                                                <div class="course-item-meta" bis_skin_checked="1">
-                                                                    <span class="item-meta course-item-preview"
-                                                                          data-preview="پیش نمایش"></span>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-tab-panel-instructor course-tab-panel" id="tab-instructor"
-                                     bis_skin_checked="1">
-                                    <div class="course-author" bis_skin_checked="1">
-                                        <div class="lp-course-author" bis_skin_checked="1">
-                                            <div class="course-author__pull-left" bis_skin_checked="1">
-                                                <img alt="User Avatar" src="assets/img/author_5.jpg"
-                                                     srcset="assets/img/author_5.jpg" class="avatar avatar-96 photo"
-                                                     height="250" width="250" loading="lazy">
-                                            </div>
-                                            <div class="course-author__pull-right" bis_skin_checked="1">
-                                                <div class="author-title" bis_skin_checked="1"><a href="my-profile.html"
-                                                                                                  bis_skin_checked="1"><span>آدام اسمیت</span></a>
-                                                </div>
-                                                <div class="author-description margin-bottom" bis_skin_checked="1">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-tab-panel-faqs course-tab-panel" id="tab-faqs" bis_skin_checked="1">
-                                    <input type="checkbox" name="course-faqs-box-ratio"
-                                           id="course-faqs-box-ratio-6150b1eb67f33">
-                                    <div class="course-faqs-box" bis_skin_checked="1">
-                                        <label class="course-faqs-box__title" for="course-faqs-box-ratio-6150b1eb67f33">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است
-                                        </label>
-                                        <div class="course-faqs-box__content" bis_skin_checked="1">
-                                            <div class="course-faqs-box__content-inner" bis_skin_checked="1">
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="checkbox" name="course-faqs-box-ratio"
-                                           id="course-faqs-box-ratio-6150b1eb67f6b">
-                                    <div class="course-faqs-box" bis_skin_checked="1">
-                                        <label class="course-faqs-box__title" for="course-faqs-box-ratio-6150b1eb67f6b">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است
-                                        </label>
-                                        <div class="course-faqs-box__content" bis_skin_checked="1">
-                                            <div class="course-faqs-box__content-inner" bis_skin_checked="1">
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="checkbox" name="course-faqs-box-ratio"
-                                           id="course-faqs-box-ratio-6150b1eb67faa">
-                                    <div class="course-faqs-box" bis_skin_checked="1">
-                                        <label class="course-faqs-box__title" for="course-faqs-box-ratio-6150b1eb67faa">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است
-                                        </label>
-                                        <div class="course-faqs-box__content" bis_skin_checked="1">
-                                            <div class="course-faqs-box__content-inner" bis_skin_checked="1">
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <input type="checkbox" name="course-faqs-box-ratio"
-                                           id="course-faqs-box-ratio-6150b1eb67fd5">
-                                    <div class="course-faqs-box" bis_skin_checked="1">
-                                        <label class="course-faqs-box__title" for="course-faqs-box-ratio-6150b1eb67fd5">
-                                            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از
-                                            طراحان گرافیک است
-                                        </label>
-                                        <div class="course-faqs-box__content" bis_skin_checked="1">
-                                            <div class="course-faqs-box__content-inner" bis_skin_checked="1">
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                                    استفاده از طراحان گرافیک است</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end entry content left -->
                     </div>
+
                     <aside class="course-summary-sidebar">
                         <div class="course-summary-sidebar__inner" bis_skin_checked="1">
                             <div class="course-sidebar-top" bis_skin_checked="1">
@@ -345,13 +107,17 @@
                                     <div class="course-price" bis_skin_checked="1">
                                         <span class="price">{{ course.price }}هزارتومان</span>
                                     </div>
-                                    <div class="lp-course-buttons" bis_skin_checked="1">
-                                        <a href="checkout.html">
-                                            <button class="lp-button button button-purchase-course">
-                                                خرید
-                                            </button>
-                                        </a>
-                                    </div>
+                                    {% if is_purchased %}
+                                        <p class="text-success  ">خریداری شده ✔</p>
+                                    {% else %}
+                                        <div class="lp-course-buttons" bis_skin_checked="1">
+                                            <a onclick="addCourseToOrder({{ course.id }})">
+                                                <button class="lp-button button button-purchase-course">
+                                                    ثبت نام در دوره
+                                                </button>
+                                            </a>
+                                        </div>
+                                    {% endif %}
                                 </div>
                                 <div class="course-featured-review margin-bottom" bis_skin_checked="1">
 
